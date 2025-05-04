@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child_and_parent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 15:45:11 by afloris           #+#    #+#             */
-/*   Updated: 2025/05/04 17:03:29 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 17:28:55 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	create_child_process(char *cmd, char **envp, int *fd, int infile)
 
 	pid = fork();
 	if (pid < 0)
-		write(1, "fork error", 10);
+		perror("fork error");
 	if (pid == 0)
 		child_process(cmd, envp, fd, infile);
 }
@@ -31,7 +31,7 @@ void	create_parent_process(char *cmd, char **envp, int *fd, int outfile)
 
 	pid = fork();
 	if (pid < 0)
-		write(1, "fork error", 10);
+		perror("fork error");
 	if (pid == 0)
 		parent_process(cmd, envp, fd, outfile);
 }
@@ -49,7 +49,7 @@ void	child_process(char *cmd, char **envp, int *fd, int infile)
 	/*if there are no mistake,
 	start redirection*/
 	dup2(fd[1], STDOUT_FILENO);
-	dup2(fd[0], STDIN_FILENO);
+	dup2(infile, STDIN_FILENO);
 	/*close the process*/
 	close(fd[1]);
 	close(infile);
@@ -60,14 +60,13 @@ void	child_process(char *cmd, char **envp, int *fd, int infile)
 void	parent_process(char *cmd, char **envp, int *fd, int outfile)
 {
 	close(fd[1]);
-
 	if (outfile < 0)
 	{
 		close (fd[0]);
 		exit(EXIT_FAILURE);
 	}
 	dup2(fd[0], STDIN_FILENO);
-	dup2(fd[1], STDOUT_FILENO);
+	dup2(outfile, STDOUT_FILENO);
 	close(fd[0]);
 	close(outfile);
 	execute(cmd, envp);

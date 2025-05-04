@@ -1,4 +1,4 @@
-NAME = pipex.a
+NAME = pipex
 
 CC = gcc
 RM = rm -f
@@ -12,7 +12,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $@ $^
 
 %.o: %.c include/pipex.h include/ft_printf.h include/libft.h
 	$(CC) $(CFLAGS) -I include -c $< -o $@
@@ -23,6 +23,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean re

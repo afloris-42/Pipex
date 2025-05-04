@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_and_execute.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:55:36 by babyf             #+#    #+#             */
-/*   Updated: 2025/05/04 16:51:33 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 17:25:26 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /*envp is connection to environment
 with this function i will get the path to find the command*/
-char	get_path(char **envp)
+char	*get_path(char **envp)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ char	*check_cmd(char **paths, char *cmd)
 			perror("malloc error");
 		full_path = ft_strjoin(paths[i], "/");
 		full_path = ft_strjoin_free(full_path, cmd);
-		if(access(full_path, X_OK) == 0)
+		if (access(full_path, X_OK) == 0)
 			return (full_path);
 		free(full_path);
 		i++;
@@ -61,10 +61,10 @@ char	*find_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	if (cmd[0] == "/" || cmd[0] == '.')
+	if (cmd[0] == '/' || cmd[0] == '.')
 	{
 		if (access(cmd, X_OK) == 0)
-			return (cmd);
+			return (ft_strdup(cmd));
 		return (NULL);
 	}
 	path_env = get_path(envp);
@@ -87,9 +87,9 @@ void	execute(char *cmd, char **envp)
 
 	args = ft_split(cmd, ' ');
 	if (!args)
-		error("malloc");
+		perror("malloc error");
 	cmd_path = find_path(args[0], envp);
-	if (!cmd_path);
+	if (!cmd_path)
 	{
 		perror ("Command not found");
 		exit(127);

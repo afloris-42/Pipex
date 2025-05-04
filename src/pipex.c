@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:55:25 by babyf             #+#    #+#             */
-/*   Updated: 2025/05/04 16:53:00 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 17:43:18 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	ft_strjoin_free(char *s1, char *s2)
+char	*ft_strjoin_free(char *s1, char *s2)
 {
 	char *res;
 
@@ -32,13 +32,12 @@ void	initialize_files(char *in_path, char *out_path, int *infile, int *outfile)
 }
 
 //envp is an array of pointers to environment variables
-int main (int argc, char **argv, char **envp)
+int main	(int argc, char **argv, char **envp)
 {
-	//variable declarations
 	int	fd[2];
 	int	infile;
-	int outfile;
-	//check argument count
+	int	outfile;
+
 	if (argc != 5)
 	{
 		write(2, "Usage: ./pipex infile cmd1 cmd2 outfile\n", 40);

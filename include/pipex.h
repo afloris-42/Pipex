@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:43:15 by babyf             #+#    #+#             */
-/*   Updated: 2025/05/04 17:03:13 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 17:16:13 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-char	get_path(char **envp);
+char	*get_path(char **envp);
 char	*check_cmd(char **paths, char *cmd);
 char	*find_path(char *cmd, char **envp);
 void	execute(char *cmd, char **envp);
@@ -31,7 +31,7 @@ void	create_child_process(char *cmd, char **envp, int *fd, int infile);
 void	create_parent_process(char *cmd, char **envp, int *fd, int outfile);
 void	child_process(char *cmd, char **envp, int *fd, int infile);
 void	parent_process(char *cmd, char **envp, int *fd, int outfile);
-void	ft_strjoin_free(char *s1, char *s2);
+char	*ft_strjoin_free(char *s1, char *s2);
 void	initialize_files(char *in_path, char *out_path, int *infile, int *outfile);
 
 #endif
