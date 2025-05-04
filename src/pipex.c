@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:55:25 by babyf             #+#    #+#             */
-/*   Updated: 2025/05/04 17:43:18 by afloris          ###   ########.fr       */
+/*   Updated: 2025/05/04 18:01:47 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin_free(char *s1, char *s2)
 {
-	char *res;
+	char	*res;
 
 	res = ft_strjoin(s1, s2);
 	free (s1);
@@ -25,10 +25,16 @@ void	initialize_files(char *in_path, char *out_path, int *infile, int *outfile)
 {
 	*infile = open(in_path, O_RDONLY);
 	if (*infile < 0)
+	{
 		perror("infile error");
+		exit (1);
+	}
 	*outfile = open (out_path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if(*outfile < 0)
+	{
 		perror("outfile error");
+		exit (1);
+	}
 }
 
 //envp is an array of pointers to environment variables
