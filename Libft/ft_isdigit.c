@@ -6,11 +6,11 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:31:26 by afloris           #+#    #+#             */
-/*   Updated: 2025/01/03 17:40:47 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 21:38:02 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_isdigit(int c)
 {

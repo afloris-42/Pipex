@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:43:15 by babyf             #+#    #+#             */
-/*   Updated: 2025/05/04 17:16:13 by afloris          ###   ########.fr       */
+/*   Updated: 2025/05/04 21:37:59 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 #define PIPEX_H
 
-#include "libft.h"
+#include "../include/libft.h"
 #include "ft_printf.h"
 #include <unistd.h>
 #include <stdlib.h>

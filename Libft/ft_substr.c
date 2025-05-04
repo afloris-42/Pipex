@@ -6,11 +6,11 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:34:58 by afloris           #+#    #+#             */
-/*   Updated: 2025/01/29 13:07:03 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 21:39:03 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	og_len = strlen (s);
+	og_len = ft_strlen (s);
 	if (start >= og_len)
 		len = 0;
 	else if (len > og_len - start)

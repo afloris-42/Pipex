@@ -6,11 +6,11 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 16:08:55 by afloris           #+#    #+#             */
-/*   Updated: 2025/01/01 18:04:09 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 21:38:01 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_atoi(const char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:52:08 by afloris           #+#    #+#             */
-/*   Updated: 2025/01/06 14:40:02 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/04 21:38:02 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	count_digit(int n)
 {

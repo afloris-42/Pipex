@@ -6,11 +6,11 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:53:18 by afloris           #+#    #+#             */
-/*   Updated: 2024/12/23 14:53:01 by afloris          ###   ########.fr       */
+/*   Updated: 2025/05/04 21:38:02 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_isprint(int c)
 {
