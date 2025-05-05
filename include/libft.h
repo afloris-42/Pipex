@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:26:09 by afloris           #+#    #+#             */
-/*   Updated: 2025/05/03 16:43:27 by babyf            ###   ########.fr       */
+/*   Updated: 2025/05/05 13:26:56 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
 
 #endif
