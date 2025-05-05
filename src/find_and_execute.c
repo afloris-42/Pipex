@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:55:36 by babyf             #+#    #+#             */
-/*   Updated: 2025/05/04 17:25:26 by afloris          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:23:22 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_path(char **envp)
 			return (envp[i] + 5);
 		i++;
 	}
-	return (NULL);
+	return (perror("PATH not found"), NULL);
 }
 
 /*check if the command exists
@@ -47,7 +47,8 @@ char	*check_cmd(char **paths, char *cmd)
 		full_path = ft_strjoin_free(full_path, cmd);
 		if (access(full_path, X_OK) == 0)
 			return (full_path);
-		free(full_path);
+		else
+			free(full_path);
 		i++;
 	}
 	return (NULL);
@@ -63,16 +64,17 @@ char	*find_path(char *cmd, char **envp)
 	i = 0;
 	if (cmd[0] == '/' || cmd[0] == '.')
 	{
-		if (access(cmd, X_OK) == 0)
+		if (access(cmd, X_OK | F_OK) == 0)
 			return (ft_strdup(cmd));
-		return (NULL);
+		else
+			return (NULL);
 	}
 	path_env = get_path(envp);
 	if (!path_env)
-		return (NULL);
+		return (perror("PATH error"), NULL);
 	paths = ft_split(path_env, ':');
 	if (!paths)
-		perror("malloc error");
+		perror("split error");
 	full_path = check_cmd(paths, cmd);
 	while (paths[i])
 		free(paths[i++]);
@@ -87,7 +89,7 @@ void	execute(char *cmd, char **envp)
 
 	args = ft_split(cmd, ' ');
 	if (!args)
-		perror("malloc error");
+		perror("split error");
 	cmd_path = find_path(args[0], envp);
 	if (!cmd_path)
 	{

@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 15:45:11 by afloris           #+#    #+#             */
-/*   Updated: 2025/05/04 17:28:55 by afloris          ###   ########.fr       */
+/*   Updated: 2025/05/05 12:35:55 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,16 @@ void	create_parent_process(char *cmd, char **envp, int *fd, int outfile)
 
 void	child_process(char *cmd, char **envp, int *fd, int infile)
 {
-	/*child is fd[1], so before anything else:*/
 	close(fd[0]);
-	/*check for mistakes*/
 	if (infile < 0)
 	{
 		close(fd[1]);
 		exit(EXIT_FAILURE);
 	}
-	/*if there are no mistake,
-	start redirection*/
 	dup2(fd[1], STDOUT_FILENO);
 	dup2(infile, STDIN_FILENO);
-	/*close the process*/
 	close(fd[1]);
 	close(infile);
-	/*and execute comand and environment*/
 	execute(cmd, envp);
 }
 
